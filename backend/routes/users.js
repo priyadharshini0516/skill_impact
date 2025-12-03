@@ -39,27 +39,4 @@ router.put('/profile', authMiddleware, async (req, res) => {
   }
 });
 
-// Get user by ID (for mission creator info)
-router.get('/:id', async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id).select('-password');
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Get all organizations (for mission listings)
-router.get('/orgs/list', async (req, res) => {
-  try {
-    const orgs = await User.find({ role: 'org' }).select('name bio profilePicture');
-    res.json(orgs);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
 module.exports = router;

@@ -4,7 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 
 // Import routes
-const authRoutes = require('./middleware/auth');
+const authRoutes = require('./routes/auth');
 const missionRoutes = require('./routes/missions');
 const applicationRoutes = require('./routes/applications');
 const userRoutes = require('./routes/users');
